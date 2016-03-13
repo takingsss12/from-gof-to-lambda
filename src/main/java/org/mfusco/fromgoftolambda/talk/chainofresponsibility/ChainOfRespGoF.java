@@ -1,10 +1,10 @@
-package org.mfusco.fromgoftolambda.examples.chainofresponsibility;
+package org.mfusco.fromgoftolambda.talk.chainofresponsibility;
 
 public class ChainOfRespGoF {
 
     public interface FileParser {
-        String parse(File file);
-        void setNextParser(FileParser next);
+        String parse( File file );
+        void setNextParser( FileParser next );
     }
 
     public abstract static class AbstractFileParser implements FileParser {

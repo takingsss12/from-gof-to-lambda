@@ -1,4 +1,4 @@
-package org.mfusco.fromgoftolambda.examples.observer;
+package org.mfusco.fromgoftolambda.talk.observer;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ObserverGof {
 
     interface Listener {
-        void onEvent(Object event);
+        void onEvent( Object event );
     }
 
     public static class Observable {

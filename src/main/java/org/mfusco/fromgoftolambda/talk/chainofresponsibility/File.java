@@ -1,4 +1,4 @@
-package org.mfusco.fromgoftolambda.examples.chainofresponsibility;
+package org.mfusco.fromgoftolambda.talk.chainofresponsibility;
 
 public class File {
 
