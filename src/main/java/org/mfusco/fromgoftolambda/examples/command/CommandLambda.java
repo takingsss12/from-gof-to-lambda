@@ -19,9 +19,7 @@ public class CommandLambda {
 
     public static class Executor {
         public void execute(List<Runnable> tasks ) {
-            for (Runnable task : tasks) {
-                task.run();
-            }
+            tasks.forEach( Runnable::run );
         }
     }
 
