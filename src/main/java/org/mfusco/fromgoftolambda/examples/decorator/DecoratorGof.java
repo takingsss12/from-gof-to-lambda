@@ -26,7 +26,7 @@ public class DecoratorGof {
         @Override
         public final double calculate(double grossAnnual) {
             double salary = salaryCalculator.calculate( grossAnnual );
-            return Taxes.generalTax( salary );
+            return applyTax( salary );
         }
     }
 
@@ -64,12 +64,13 @@ public class DecoratorGof {
     }
 
     public static void main( String[] args ) {
+        System.out.println(
         new HealthInsuranceDecorator(
             new RegionalTaxDecorator(
                 new GeneralTaxDecorator(
                     new DefaultSalaryCalculator()
                 )
             )
-        ).calculate( 80000.00 );
+        ).calculate( 30000.00 ));
     }
 }
