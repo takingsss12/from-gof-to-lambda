@@ -21,15 +21,10 @@ public class ObserverLambda {
         }
     }
 
-    public static class Observer1 {
-        Observer1(Observable observable) {
-            observable.register( this, System.out::println );
-        }
-    }
-
     public static void main( String[] args ) {
         Observable observable = new Observable();
-        new Observer1( observable );
+        observable.register( "key1", System.out::println );
+        observable.register( "key2", System.out::println );
 
         observable.sendEvent( "Hello World!" );
     }
