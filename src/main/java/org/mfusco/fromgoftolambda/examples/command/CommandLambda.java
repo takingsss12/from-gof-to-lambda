@@ -17,10 +17,8 @@ public class CommandLambda {
         System.out.println("Sending: " + message);
     }
 
-    public static class Executor {
-        public void execute(List<Runnable> tasks ) {
-            tasks.forEach( Runnable::run );
-        }
+    public static void execute(List<Runnable> tasks ) {
+        tasks.forEach( Runnable::run );
     }
 
     public static void main( String[] args ) {
@@ -29,6 +27,6 @@ public class CommandLambda {
         tasks.add(() -> save("Cheers"));
         tasks.add(() -> send("Bye"));
 
-        new Executor().execute( tasks );
+        execute( tasks );
     }
 }
