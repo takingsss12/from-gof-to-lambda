@@ -22,7 +22,7 @@ public class Resource {
     }
 
     private void riskyOperation() {
-        if ( new Random().nextInt( 10 ) == 0) {
+        if ( new Random().nextInt( 3 ) == 0) {
             throw new RuntimeException();
         }
     }
