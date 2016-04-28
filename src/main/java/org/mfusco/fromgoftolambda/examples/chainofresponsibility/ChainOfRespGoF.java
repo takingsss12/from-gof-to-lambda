@@ -2,7 +2,7 @@ package org.mfusco.fromgoftolambda.examples.chainofresponsibility;
 
 public class ChainOfRespGoF {
 
-    public interface FileParser {
+    interface FileParser {
         String parse(File file);
         void setNextParser(FileParser next);
     }
