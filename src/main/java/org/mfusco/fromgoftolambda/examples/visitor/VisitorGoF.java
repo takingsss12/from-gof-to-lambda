@@ -9,7 +9,9 @@ public class VisitorGoF {
     }
 
     interface Element {
-        <T> T accept(Visitor<T> visitor);
+        default <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
+        }
     }
 
     public static class Square implements Element {
@@ -18,11 +20,6 @@ public class VisitorGoF {
         public Square(double side) {
             this.side = side;
         }
-
-        @Override
-        public <T> T accept(Visitor<T> visitor) {
-            return visitor.visit(this);
-        }
     }
 
     public static class Circle implements Element {
@@ -30,11 +27,6 @@ public class VisitorGoF {
 
         public Circle(double radius) {
             this.radius = radius;
-        }
-
-        @Override
-        public <T> T accept(Visitor<T> visitor) {
-            return visitor.visit(this);
         }
     }
 
@@ -45,11 +37,6 @@ public class VisitorGoF {
         public Rectangle( double weidht, double height ) {
             this.weidht = weidht;
             this.height = height;
-        }
-
-        @Override
-        public <T> T accept(Visitor<T> visitor) {
-            return visitor.visit(this);
         }
     }
 
