@@ -4,14 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class VisitorGoF {
-    interface Visitor<T> {
-        T visit( Element element );
-    }
-
     interface Element {
-        default <T> T accept(Visitor<T> visitor) {
-            return visitor.visit(this);
-        }
+        <T> T accept(Visitor<T> visitor);
     }
 
     public static class Square implements Element {
@@ -20,6 +14,11 @@ public class VisitorGoF {
         public Square(double side) {
             this.side = side;
         }
+
+        @Override
+        public <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
+        }
     }
 
     public static class Circle implements Element {
@@ -27,6 +26,11 @@ public class VisitorGoF {
 
         public Circle(double radius) {
             this.radius = radius;
+        }
+
+        @Override
+        public <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
         }
     }
 
@@ -38,28 +42,20 @@ public class VisitorGoF {
             this.weidht = weidht;
             this.height = height;
         }
-    }
 
-    public static abstract class AbstractVisitor<T> implements Visitor<T> {
         @Override
-        public T visit( Element element ) {
-            if ( element instanceof Square ) {
-                return visit( ( (Square) element ) );
-            } else if ( element instanceof Circle ) {
-                return visit( ( (Circle) element ) );
-            } else if ( element instanceof Rectangle ) {
-                return visit( ( (Rectangle) element ) );
-            }
-            throw new RuntimeException( "Unknown element type" );
+        public <T> T accept(Visitor<T> visitor) {
+            return visitor.visit(this);
         }
-
-        public abstract T visit( Square element );
-        public abstract T visit( Circle element );
-        public abstract T visit( Rectangle element );
     }
 
-    public static class AreaVisitor extends AbstractVisitor<Double> {
+    interface Visitor<T> {
+        T visit(Square element);
+        T visit(Circle element);
+        T visit(Rectangle element);
+    }
 
+    public static class AreaVisitor implements Visitor<Double> {
         public Double visit( Square element ) {
             return element.side * element.side;
         }
@@ -73,8 +69,7 @@ public class VisitorGoF {
         }
     }
 
-    public static class PerimeterVisitor extends AbstractVisitor<Double> {
-
+    public static class PerimeterVisitor implements Visitor<Double> {
         public Double visit( Square element ) {
             return 4 * element.side ;
         }
