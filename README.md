@@ -12,3 +12,5 @@ Interpreter            | Map of functions
 Visitor                | Pattern matching + Functions
 
 by @mariofusco
+
+github.com/mariofusco/from-gof-to-lambda
